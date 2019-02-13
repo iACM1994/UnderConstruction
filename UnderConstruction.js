@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){
 
+	console.log("UnderConstruction On");
+
 	if( document.getElementById('UnderConstruction')){
 		var UCEle = document.getElementById("UnderConstruction");
 		var UCText = UCEle.innerText;
