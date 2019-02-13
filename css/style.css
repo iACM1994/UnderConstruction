@@ -1,0 +1,16 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+.info{
+	padding: 5px;
+	border-radius: 3px;
+	width: 30px;
+	transition: width .5s ease-in;
+}
+
+.infoSignImg{
+	width: 30px;
+	height: 30px;
+}
