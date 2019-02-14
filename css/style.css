@@ -1,16 +1,45 @@
-body{
+﻿body{
 	margin: 0;
 	padding: 0;
 }
 
-.info{
-	padding: 5px;
-	border-radius: 3px;
-	width: 30px;
-	transition: width .5s ease-in;
+#UCBody{
+ 	position: fixed;
+  	top: 3%;
+  	left: 5%;
+  	z-index: 999;
+  	background: yellow;
 }
 
-.infoSignImg{
+.info{
+  	
+	padding: 3px;
+	border-radius: 3px;
 	width: 30px;
-	height: 30px;
+  	height: 30px;
+    overflow: hidden;
+  	transition: all .5s ease-in;
+}
+
+.infoText1{
+  	float: left;
+ 	display: none; 
+  	transition: all .5s ease-in;
+}
+
+.info:hover{
+ 	width: auto; 
+}
+
+.info:hover .infoText1{
+ 	display: block;
+}
+
+.infoSign{
+  	float: left;
+	padding: 4px 9px;
+	font-size: 10px;
+	border-radius: 50%;
+  	border: 1px solid #000;
+  	margin-right: 3px;
 }
