@@ -2,7 +2,9 @@
 
 	if( document.getElementById('UnderConstruction')){
 		var UCEle = document.getElementById("UnderConstruction");
-		var UCText = "In Maintainence" // Must be dynamic later
+		var UCText = UCEle.value;
+
+
 
 		var infoDiv = document.createElement("DIV");
 		infoDiv.setAttribute("id", "infoDiv");
@@ -19,7 +21,7 @@
 
 				var infoText = document.createElement("SPAN");
 				infoText.setAttribute("id", "infoText");
-				infoText.innerText = "In Maintainence";
+				infoText.innerText = UCText;
 				
 
 				infoBlock.append(infoText);
@@ -40,14 +42,19 @@
       	var info_Sign = document.getElementById("infoSign");
 
       	info_Sign.addEventListener("click", function(){
-      		if( info_Text.style.width == "0px" ){
-      			info_Text.style.width = info_Text.getAttribute("clientWidth") + "px";
-	      		info_Text.style.marginLeft = "5px";
-	      		info_Text.style.visibility = "visible";
+      		var info_div = document.getElementById("infoDiv");
+      		if( !info_div.classList.contains("dragging")){
+      			if( info_Text.style.width == "0px" ){
+	      			info_Text.style.width = info_Text.getAttribute("clientWidth") + "px";
+		      		info_Text.style.marginLeft = "5px";
+		      		info_Text.style.visibility = "visible";
+	      		}else{
+	      			info_Text.style.width = "0px";
+		      		info_Text.style.marginLeft = "0px";
+		      		info_Text.style.visibility = "hidden";
+	      		}
       		}else{
-      			info_Text.style.width = "0px";
-	      		info_Text.style.marginLeft = "0px";
-	      		info_Text.style.visibility = "hidden";
+      			info_div.classList.remove("dragging");
       		}
       	});
 
@@ -65,6 +72,8 @@ function dragElement(elem){
 
 	elem.onmousedown = dragMouseDown;
 
+	elem.classList.add('dragging');
+
 	function dragMouseDown(e){
 		e = e || window.event;
 		e.preventDefault();
@@ -79,6 +88,8 @@ function dragElement(elem){
 	function elementDrag(e){
 		e = e || window.event;
 		e.preventDefault();
+
+		elem.classList.add('dragging');
 
 		pos1 = pos3 - e.clientX;
 		pos2 = pos4 - e.clientY;
