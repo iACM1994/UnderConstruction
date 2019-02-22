@@ -8,7 +8,6 @@
 
 		var infoDiv = document.createElement("DIV");
 		infoDiv.setAttribute("id", "infoDiv");
-		//infoDiv.style.display = 'none';
 
 			var infoBlock = document.createElement("DIV");
 			infoBlock.setAttribute("id", "infoBlock");
@@ -58,9 +57,14 @@
       		}
       	});
 
-      	//infoDiv.style.display = 'block';
-
       	var info_div = document.getElementById('infoDiv');
+
+      	info_div.addEventListener("touchmove", function(e){
+      		var touchLocation = e.targetTouches[0];
+
+      		info_div.style.left = touchLocation.pageX + "px";
+      		info_div.style.top = touchLocation.pageY + "px";
+      	});
 
       	dragElement(info_div);
 
@@ -70,9 +74,19 @@
 function dragElement(elem){
 	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-	elem.onmousedown = dragMouseDown;
+	
+	var isTouchDevice = 'ontouchstart' in document.documentElement;
 
+	elem.onmousedown = dragMouseDown;
+	
 	elem.classList.add('dragging');
+
+	function dragTouchStart(e){
+		e = e || window.event;
+		e.preventDefault();
+
+		console.log("touching");
+	}
 
 	function dragMouseDown(e){
 		e = e || window.event;
